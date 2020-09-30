@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveTopTweetModifier;
+use App\Modifiers\RemoveRetweetLinkModifier;
 use PHPUnit\Framework\TestCase;
 
-class RemoveTopTweetModifierTest extends TestCase
+class RemoveRetweetLinkModifierTest extends TestCase
 {
     public function testRemoveTopTweet()
     {
@@ -14,9 +14,10 @@ class RemoveTopTweetModifierTest extends TestCase
             '<p>Test Content</p>'."\n".
             '<h1>TOP TWEET</h1>'."\n";
 
-        $expected = '<p><a href="https://twitter.com/ArkEcosystem/status/1295759668166438912">This Month’s Top Tweet (Link for Retweet)</a>- - - - - -</p>'."\n".
-            '<p>Test Content</p>'."\n";
+        $expected = '<h1>TOP TWEET</h1>'."\n".
+            '<p>Test Content</p>'."\n".
+            '<h1>TOP TWEET</h1>'."\n";
 
-        $this->assertEquals((new RemoveTopTweetModifier())->modify($content, []), $expected);
+        $this->assertEquals((new RemoveRetweetLinkModifier())->modify($content, []), $expected);
     }
 }
