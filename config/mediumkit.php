@@ -6,6 +6,7 @@ use App\Modifiers\MoveHeadingImagesModifier;
 use App\Modifiers\MoveParagraphImagesModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use App\Modifiers\RemoveHeadingImagesModifier;
+use App\Modifiers\RemoveHorizontalRuleModifier;
 
 return [
 
@@ -22,6 +23,7 @@ return [
             MoveParagraphImagesModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
+            RemoveHorizontalRuleModifier::class,
         ],
 
     ]
