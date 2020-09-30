@@ -11,6 +11,7 @@ use App\Modifiers\RemoveTopTweetModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\ConvertH3ToH4Modifier;
 use App\Modifiers\ConvertH2ToH3Modifier;
+use App\Modifiers\ConvertH1ToH2Modifier;
 
 return [
 
@@ -32,6 +33,7 @@ return [
             RemoveListItemParagraphsModifier::class,
             ConvertH3ToH4Modifier::class,
             ConvertH2ToH3Modifier::class,
+            ConvertH1ToH2Modifier::class,
         ],
 
     ]
