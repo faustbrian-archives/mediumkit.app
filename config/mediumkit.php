@@ -3,6 +3,7 @@
 use App\Modifiers\RemoveAuthorBlockModifier;
 use App\Modifiers\RemoveTopHeadingModifier;
 use App\Modifiers\MoveHeadingImagesModifier;
+use App\Modifiers\MoveParagraphImagesModifier;
 
 return [
 
@@ -16,6 +17,7 @@ return [
             RemoveTopHeadingModifier::class,
             RemoveAuthorBlockModifier::class,
             MoveHeadingImagesModifier::class,
+            MoveParagraphImagesModifier::class,
         ],
 
     ]
