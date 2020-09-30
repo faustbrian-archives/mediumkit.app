@@ -7,6 +7,7 @@ use App\Modifiers\MoveParagraphImagesModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use App\Modifiers\RemoveHeadingImagesModifier;
 use App\Modifiers\RemoveHorizontalRuleModifier;
+use App\Modifiers\RemoveTopTweetModifier;
 
 return [
 
@@ -24,6 +25,7 @@ return [
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
             RemoveHorizontalRuleModifier::class,
+            RemoveTopTweetModifier::class,
         ],
 
     ]
