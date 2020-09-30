@@ -9,6 +9,7 @@ use App\Modifiers\RemoveHeadingImagesModifier;
 use App\Modifiers\RemoveHorizontalRuleModifier;
 use App\Modifiers\RemoveTopTweetModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
+use App\Modifiers\ConvertH3ToH4Modifier;
 
 return [
 
@@ -28,6 +29,7 @@ return [
             RemoveHorizontalRuleModifier::class,
             RemoveTopTweetModifier::class,
             RemoveListItemParagraphsModifier::class,
+            ConvertH3ToH4Modifier::class,
         ],
 
     ]
