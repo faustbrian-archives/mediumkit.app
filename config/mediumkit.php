@@ -4,6 +4,7 @@ use App\Modifiers\RemoveAuthorBlockModifier;
 use App\Modifiers\RemoveTopHeadingModifier;
 use App\Modifiers\MoveHeadingImagesModifier;
 use App\Modifiers\MoveParagraphImagesModifier;
+use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 
 return [
 
@@ -18,6 +19,7 @@ return [
             RemoveAuthorBlockModifier::class,
             MoveHeadingImagesModifier::class,
             MoveParagraphImagesModifier::class,
+            RemoveSmallOrMissingImagesModifier::class,
         ],
 
     ]
