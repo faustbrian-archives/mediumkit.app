@@ -1,7 +1,7 @@
 <?php
 
-use App\Modifier\RemoveAuthorBlockModifier;
-use App\Modifier\RemoveTopHeadingModifier;
+use App\Modifiers\RemoveAuthorBlockModifier;
+use App\Modifiers\RemoveTopHeadingModifier;
 
 return [
 
