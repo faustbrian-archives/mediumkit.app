@@ -5,6 +5,7 @@ use App\Modifiers\RemoveTopHeadingModifier;
 use App\Modifiers\MoveHeadingImagesModifier;
 use App\Modifiers\MoveParagraphImagesModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
+use App\Modifiers\RemoveHeadingImagesModifier;
 
 return [
 
@@ -20,6 +21,7 @@ return [
             MoveHeadingImagesModifier::class,
             MoveParagraphImagesModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
+            RemoveHeadingImagesModifier::class,
         ],
 
     ]
