@@ -70,7 +70,13 @@ class IndexArticle implements ShouldQueue
         $modifiers = config('mediumkit.modifiers.'.$type);
 
         foreach ($modifiers as $modifier) {
-            $content = (new $modifier)->modify($content);
+            $content = (new $modifier)->modify($content, [
+                'title'   => $this->title,
+                'author'  => $this->author,
+                'excerpt' => $this->excerpt,
+                'url'     => $this->url,
+                'date'    => $this->date,
+            ]);
         }
 
         return $content;
