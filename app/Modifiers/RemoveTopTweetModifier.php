@@ -8,6 +8,6 @@ class RemoveTopTweetModifier implements Modifier
 {
     public function modify(string $content, array $article): string
     {
-        return preg_replace('/<h1.*?>TOP TWEET(.|\s)*?<a href="https:\/\/twitter\.com.*?(- - - - - -)<\/p>\n/', '', $content);
+        return preg_replace('/<h1.*?>TOP TWEET(.|\s)*?(- - - - - -)<\/p>\n/', '', $content);
     }
 }
