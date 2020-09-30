@@ -2,6 +2,7 @@
 
 use App\Modifiers\RemoveAuthorBlockModifier;
 use App\Modifiers\RemoveTopHeadingModifier;
+use App\Modifiers\MoveHeadingImagesModifier;
 
 return [
 
@@ -14,6 +15,7 @@ return [
         'content_html' => [
             RemoveTopHeadingModifier::class,
             RemoveAuthorBlockModifier::class,
+            MoveHeadingImagesModifier::class,
         ],
 
     ]
