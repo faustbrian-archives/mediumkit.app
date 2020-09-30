@@ -10,6 +10,7 @@ use App\Modifiers\RemoveHorizontalRuleModifier;
 use App\Modifiers\RemoveTopTweetModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\ConvertH3ToH4Modifier;
+use App\Modifiers\ConvertH2ToH3Modifier;
 
 return [
 
@@ -30,6 +31,7 @@ return [
             RemoveTopTweetModifier::class,
             RemoveListItemParagraphsModifier::class,
             ConvertH3ToH4Modifier::class,
+            ConvertH2ToH3Modifier::class,
         ],
 
     ]
