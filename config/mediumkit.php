@@ -1,5 +1,6 @@
 <?php
 
+use App\Modifier\RemoveTopHeadingModifier;
 
 return [
 
@@ -9,7 +10,9 @@ return [
 
         'content_markdown' => [],
 
-        'content_html' => [],
+        'content_html' => [
+            RemoveTopHeadingModifier::class,
+        ],
 
     ]
 
