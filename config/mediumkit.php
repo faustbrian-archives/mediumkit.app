@@ -1,5 +1,6 @@
 <?php
 
+use App\Modifier\RemoveAuthorBlockModifier;
 use App\Modifier\RemoveTopHeadingModifier;
 
 return [
@@ -12,6 +13,7 @@ return [
 
         'content_html' => [
             RemoveTopHeadingModifier::class,
+            RemoveAuthorBlockModifier::class,
         ],
 
     ]
