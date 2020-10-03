@@ -28,7 +28,7 @@ return [
             // Clean up obfuscation junk.
             RemoveClassesModifier::class,
             RemoveIdsModifier::class,
-            // RemoveHtmlTagWhitespaceModifier::class,
+            RemoveHtmlTagWhitespaceModifier::class,
             // Fix/Clean HTML Markup
             ConvertPreSpanToPreCodeModifier::class,
             // RemoveTopHeadingModifier::class,
