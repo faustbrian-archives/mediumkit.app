@@ -19,8 +19,9 @@ class CreateArticlesTable extends Migration
             $table->text('author');
             $table->text('author_link');
             $table->text('content_original');
+            $table->text('content_original_html');
             $table->text('content_markdown');
-            $table->text('content_html');
+            $table->text('content_markdown_html');
             $table->text('excerpt');
             $table->text('url')->unique();
             $table->text('date');

@@ -50,18 +50,19 @@ class IndexArticle implements ShouldQueue
         $contentHtml = Markdown::convertToHtml($contentMarkdown);
 
         Article::upsert([
-            'title'            => $this->title,
-            'author'           => $this->author,
-            'author_link'      => $this->author_link,
-            'content_original' => $this->applyModifiers($contentOriginal, 'content_original'),
-            'content_markdown' => $this->applyModifiers($contentMarkdown, 'content_markdown'),
-            'content_html'     => $this->applyModifiers($contentHtml, 'content_html'),
-            'excerpt'          => $this->excerpt,
-            'url'              => $this->url,
-            'date'             => $this->date,
-            'banner'           => str_replace('https://miro.medium.com/max/60/', 'https://cdn-images-1.medium.com/max/1200/', $banner),
-            'embed_meta'       => json_encode($embed->getMetas()->all()),
-            'embed_linked'     => json_encode($embed->getLinkedData()->all()),
+            'title'                 => $this->title,
+            'author'                => $this->author,
+            'author_link'           => $this->author_link,
+            'content_original'      => $contentOriginal,
+            'content_original_html' => $this->applyModifiers($contentOriginal, 'content_original'),
+            'content_markdown'      => $this->applyModifiers($contentMarkdown, 'content_markdown'),
+            'content_markdown_html' => $this->applyModifiers($contentHtml, 'content_html'),
+            'excerpt'               => $this->excerpt,
+            'url'                   => $this->url,
+            'date'                  => $this->date,
+            'banner'                => str_replace('https://miro.medium.com/max/60/', 'https://cdn-images-1.medium.com/max/1200/', $banner),
+            'embed_meta'            => json_encode($embed->getMetas()->all()),
+            'embed_linked'          => json_encode($embed->getLinkedData()->all()),
         ], ['url']);
     }
 
