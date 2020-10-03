@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Article;
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 
 class DumpArticles extends Command
@@ -28,6 +29,12 @@ class DumpArticles extends Command
      */
     public function handle()
     {
-        file_put_contents(base_path('medium.json'), Article::get()->unique('title')->toJson());
+        $articles = Article::get()->unique('title');
+
+        file_put_contents(base_path('medium.json'), $articles->toJson());
+
+        foreach ($articles as $article) {
+            file_put_contents(base_path('articles/'.Str::slug($article->title).'.html'), $article->content_original_html);
+        }
     }
 }

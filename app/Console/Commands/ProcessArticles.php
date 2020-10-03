@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
+use PHPHtmlParser\Dom;
 use App\Models\Article;
+use Illuminate\Console\Command;
 use League\HTMLToMarkdown\HtmlConverter;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
@@ -36,9 +37,9 @@ class ProcessArticles extends Command
             $contentHtml = Markdown::convertToHtml($contentMarkdown);
 
             $article->update([
-                'content_original_html' => $this->applyModifiers($article, $contentOriginal, 'content_original'),
+                'content_original_html' => $this->applyModifiers($article, $contentOriginal, 'content_original_html'),
                 'content_markdown'      => $this->applyModifiers($article, $contentMarkdown, 'content_markdown'),
-                'content_markdown_html' => $this->applyModifiers($article, $contentHtml, 'content_html'),
+                'content_markdown_html' => $this->applyModifiers($article, $contentHtml, 'content_markdown_html'),
             ]);
         }
     }

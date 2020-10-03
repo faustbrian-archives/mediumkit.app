@@ -11,6 +11,7 @@ use App\Modifiers\MoveHeadingImagesModifier;
 use App\Modifiers\RemoveAuthorBlockModifier;
 use App\Modifiers\RemoveBloatMarkupModifier;
 use App\Modifiers\RemoveRetweetLinkModifier;
+use App\Modifiers\RemoveAuthorHeaderModifier;
 use App\Modifiers\MoveParagraphImagesModifier;
 use App\Modifiers\RemoveHeadingImagesModifier;
 use App\Modifiers\RemoveHorizontalRuleModifier;
@@ -23,23 +24,23 @@ return [
 
     'modifiers' => [
 
-        'content_original' => [
+        'content_original_html' => [
             // Clean up obfuscation junk.
             RemoveClassesModifier::class,
             RemoveIdsModifier::class,
-            RemoveHtmlTagWhitespaceModifier::class,
+            // RemoveHtmlTagWhitespaceModifier::class,
             // Fix/Clean HTML Markup
             ConvertPreSpanToPreCodeModifier::class,
-            RemoveTopHeadingModifier::class,
-            RemoveAuthorBlockModifier::class,
-            // MoveHeadingImagesModifier::class,
-            // MoveParagraphImagesModifier::class,
+            // RemoveTopHeadingModifier::class,
+            RemoveAuthorHeaderModifier::class,
+            // // MoveHeadingImagesModifier::class,
+            // // MoveParagraphImagesModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
-            RemoveHorizontalRuleModifier::class,
+            // RemoveHorizontalRuleModifier::class,
             RemoveTopTweetModifier::class,
             RemoveRetweetLinkModifier::class,
-            RemoveListItemParagraphsModifier::class,
+            // RemoveListItemParagraphsModifier::class,
             ConvertH3ToH4Modifier::class,
             ConvertH2ToH3Modifier::class,
             ConvertH1ToH2Modifier::class,
@@ -47,9 +48,11 @@ return [
             RemoveBloatMarkupModifier::class,
         ],
 
-        'content_markdown' => [],
+        'content_markdown' => [
+            //
+        ],
 
-        'content_html' => [
+        'content_markdown_html' => [
             RemoveTopHeadingModifier::class,
             RemoveAuthorBlockModifier::class,
             MoveHeadingImagesModifier::class,
