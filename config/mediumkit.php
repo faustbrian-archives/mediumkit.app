@@ -11,6 +11,7 @@ use App\Modifiers\MoveHeadingImagesModifier;
 use App\Modifiers\RemoveAuthorBlockModifier;
 use App\Modifiers\RemoveBloatMarkupModifier;
 use App\Modifiers\RemoveRetweetLinkModifier;
+use App\Modifiers\ReplaceSourceSetsModifier;
 use App\Modifiers\RemoveAuthorHeaderModifier;
 use App\Modifiers\MoveParagraphImagesModifier;
 use App\Modifiers\RemoveHeadingImagesModifier;
@@ -35,6 +36,7 @@ return [
             RemoveAuthorHeaderModifier::class,
             // // MoveHeadingImagesModifier::class,
             // // MoveParagraphImagesModifier::class,
+            ReplaceSourceSetsModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
             // RemoveHorizontalRuleModifier::class,
