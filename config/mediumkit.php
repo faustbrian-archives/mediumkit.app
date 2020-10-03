@@ -13,12 +13,22 @@ use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\ConvertH3ToH4Modifier;
 use App\Modifiers\ConvertH2ToH3Modifier;
 use App\Modifiers\ConvertH1ToH2Modifier;
+use App\Modifiers\RemoveBloatMarkupModifier;
+use App\Modifiers\RemoveClassesModifier;
+use App\Modifiers\RemoveHtmlTagWhitespaceModifier;
+use App\Modifiers\RemoveIdsModifier;
 
 return [
 
     'modifiers' => [
 
-        'content_original' => [],
+        'content_original' => [
+            RemoveClassesModifier::class,
+            RemoveIdsModifier::class,
+            RemoveHtmlTagWhitespaceModifier::class,
+            RemoveBloatMarkupModifier::class,
+            ConvertPreSpanToPreCodeModifier::class,
+        ],
 
         'content_markdown' => [],
 
