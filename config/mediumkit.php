@@ -20,6 +20,7 @@ use App\Modifiers\ConvertPreSpanToPreCodeModifier;
 use App\Modifiers\RemoveHtmlTagWhitespaceModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
+use App\Modifiers\ConvertBreakingLineToNewLineModifier;
 
 return [
 
@@ -46,6 +47,7 @@ return [
             ConvertH3ToH4Modifier::class,
             ConvertH2ToH3Modifier::class,
             ConvertH1ToH2Modifier::class,
+            ConvertBreakingLineToNewLineModifier::class,
             // Remove dead elements without any contents after we cleaned up.
             RemoveBloatMarkupModifier::class,
         ],
