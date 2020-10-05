@@ -17,18 +17,21 @@ class IndexMonth implements ShouldQueue
     public string $host;
     public int $year;
     public int $month;
+    public int $day;
 
-    public function __construct(string $host, int $year, int $month)
+    public function __construct(string $host, int $year, int $month, int $day)
     {
         $this->host = $host;
         $this->year = $year;
         $this->month = $month;
+        $this->day = $day;
     }
 
     public function handle()
     {
         $month = sprintf('%02d', $this->month);
-        $response = Http::get("{$this->host}/archive/{$this->year}/{$month}")->body();
+        $day = sprintf('%02d', $this->day);
+        $response = Http::get("{$this->host}/archive/{$this->year}/{$month}/{$day}")->body();
 
         $dom = new Dom();
         $dom->loadStr($response);

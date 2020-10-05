@@ -31,12 +31,14 @@ class IndexArticles extends Command
         $years = [];
 
         foreach (range($this->option('start'), $this->option('end')) as $year) {
-            $years[$year] =  range(1, 12);
+            $years[$year] = range(1, 12);
         }
 
         foreach ($years as $year => $months) {
             foreach ($months as $month) {
-                IndexMonth::dispatch($this->option('host'), $year, $month);
+                foreach (range(1, 31) as $day) {
+                    IndexMonth::dispatch($this->option('host'), $year, $month, $day);
+                }
             }
         }
     }
