@@ -35,6 +35,7 @@ class DumpArticles extends Command
 
         foreach ($articles as $article) {
             file_put_contents(base_path('articles/'.Str::slug($article->title).'.html'), $article->content_original_html);
+            file_put_contents(base_path('articles-md/'.Str::slug($article->title).'.md'), $article->content_markdown);
         }
     }
 }
