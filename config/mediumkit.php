@@ -22,6 +22,7 @@ use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use App\Modifiers\ConvertBreakingLineToNewLineModifier;
 use App\Modifiers\MarkdownRemoveHeadingImagesModifier;
+use App\Modifiers\MarkdownRemoveHorizontalRuleModifier;
 
 return [
 
@@ -55,6 +56,7 @@ return [
 
         'content_markdown' => [
             MarkdownRemoveHeadingImagesModifier::class,
+            MarkdownRemoveHorizontalRuleModifier::class,
         ],
 
         'content_markdown_html' => [
