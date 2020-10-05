@@ -21,6 +21,7 @@ use App\Modifiers\RemoveHtmlTagWhitespaceModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use App\Modifiers\ConvertBreakingLineToNewLineModifier;
+use App\Modifiers\MarkdownRemoveHeadingImagesModifier;
 
 return [
 
@@ -53,7 +54,7 @@ return [
         ],
 
         'content_markdown' => [
-            //
+            MarkdownRemoveHeadingImagesModifier::class,
         ],
 
         'content_markdown_html' => [
