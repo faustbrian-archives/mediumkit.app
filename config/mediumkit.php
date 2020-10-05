@@ -41,7 +41,7 @@ return [
             ReplaceSourceSetsModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
-            // RemoveHorizontalRuleModifier::class,
+            RemoveHorizontalRuleModifier::class,
             RemoveTopTweetModifier::class,
             RemoveRetweetLinkModifier::class,
             // RemoveListItemParagraphsModifier::class,
