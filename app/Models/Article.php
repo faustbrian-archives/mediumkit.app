@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Staudenmeir\LaravelUpsert\Eloquent\HasUpsertQueries;
 
 class Article extends Model
@@ -24,6 +24,7 @@ class Article extends Model
      * @var array
      */
     protected $casts = [
+        'date'         => 'datetime',
         'embed_meta'   => 'array',
         'embed_linked' => 'array',
     ];

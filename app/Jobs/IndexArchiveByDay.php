@@ -3,14 +3,16 @@
 namespace App\Jobs;
 
 use PHPHtmlParser\Dom;
+use App\Models\Article;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class IndexMonth implements ShouldQueue
+class IndexArchiveByDay implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -37,14 +39,21 @@ class IndexMonth implements ShouldQueue
         $dom->loadStr($response);
 
         foreach ($dom->find('.postArticle--short') as $row) {
-            $results[] = IndexArticle::dispatch([
+            $article = Article::upsert([
                 'title'       => $row->find('.graf--h3')->innerText,
                 'author'      => $row->find('.ds-link--styleSubtle')->innerText,
                 'author_link' => $row->find('.ds-link--styleSubtle')->getAttribute('href'),
                 'excerpt'     => $row->find('.postArticle-content')->innerText,
-                'url'         => $row->find('.button--chromeless')->getAttribute('href'),
+                'url'         => strtok($row->find('.button--chromeless')->getAttribute('href'), '?'),
                 'date'        => $row->find('time')->getAttribute('datetime'),
-            ]);
+            ], ['url']);
+
+            // IndexArticle::dispatch($article);
         }
+    }
+
+    public function tags()
+    {
+        return ['archive', 'year:'.$this->year, 'month:'.$this->month, 'day:'.$this->day];
     }
 }

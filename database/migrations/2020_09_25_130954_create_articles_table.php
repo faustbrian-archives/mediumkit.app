@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateArticlesTable extends Migration
 {
@@ -15,14 +15,15 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid');
             $table->text('title');
             $table->text('author');
             $table->text('author_link');
-            $table->text('content_original');
-            $table->text('content_original_html');
-            $table->text('content_markdown');
-            $table->text('content_markdown_html');
-            $table->text('excerpt');
+            $table->text('content_original')->nullable();
+            $table->text('content_original_html')->nullable();
+            $table->text('content_markdown')->nullable();
+            $table->text('content_markdown_html')->nullable();
+            $table->text('excerpt')->nullable();
             $table->text('url')->unique();
             $table->text('date');
             $table->text('banner')->nullable();
