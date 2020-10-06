@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\MoveParagraphImagesModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\MoveParagraphImagesModifier;
 
 class MoveParagraphImagesModifierTest extends TestCase
 {

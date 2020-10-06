@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\IndexMonth;
+use App\Jobs\IndexArchiveByDay;
 use Illuminate\Console\Command;
 
 class IndexArticles extends Command
@@ -37,7 +37,7 @@ class IndexArticles extends Command
         foreach ($years as $year => $months) {
             foreach ($months as $month) {
                 foreach (range(1, 31) as $day) {
-                    IndexMonth::dispatch($this->option('host'), $year, $month, $day);
+                    IndexArchiveByDay::dispatch($this->option('host'), $year, $month, $day);
                 }
             }
         }

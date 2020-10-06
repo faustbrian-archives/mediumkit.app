@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveListItemParagraphsModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveListItemParagraphsModifier;
 
 class RemoveListItemParagraphsModifierTest extends TestCase
 {

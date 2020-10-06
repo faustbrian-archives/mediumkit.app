@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 
-class RemoveSmallOrMissingImagesModifierTest extends TestCase
+class RemoveSmallImagesModifierTest extends TestCase
 {
     public function testRemoveSmallImages()
     {

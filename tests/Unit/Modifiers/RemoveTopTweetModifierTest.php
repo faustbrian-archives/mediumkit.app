@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveTopTweetModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveTopTweetModifier;
 
 class RemoveTopTweetModifierTest extends TestCase
 {

@@ -6,6 +6,7 @@ use Embed\Embed;
 use PHPHtmlParser\Dom;
 use App\Models\Article;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use League\HTMLToMarkdown\HtmlConverter;
@@ -17,26 +18,26 @@ class IndexArticle implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $title;
-    public $author;
-    public $author_link;
-    public $excerpt;
-    public $url;
-    public $date;
+    public Article $article;
 
-    public function __construct(array $article)
+    public function __construct(Article $article)
     {
-        $this->title = $article['title'];
-        $this->author = $article['author'];
-        $this->author_link = $article['author_link'];
-        $this->excerpt = $article['excerpt'];
-        $this->url = strtok($article['url'], '?');
-        $this->date = $article['date'];
+        $this->article = $article;
     }
 
     public function handle()
     {
-        $embed = (new Embed())->get($this->url);
+        $embedMeta = [];
+        $embedLinked = [];
+
+        try {
+            $embed = (new Embed())->get($this->article->url);
+            $embedMeta = $embed->getMetas()->all();
+            $embedLinked = $embed->getLinkedData()->all();
+        } catch (\Throwable $th) {
+            //
+        }
+
         $dom = (new Dom())->loadStr($embed->getDocument());
 
         try {
@@ -45,39 +46,39 @@ class IndexArticle implements ShouldQueue
             $banner = null;
         }
 
-        $contentOriginal = $dom->find('article')->innerHTML;
-        $contentMarkdown = strip_tags((new HtmlConverter())->convert($contentOriginal));
-        $contentHtml = Markdown::convertToHtml($contentMarkdown);
+        $contentOriginal = null;
+        $contentMarkdown = null;
+        $contentHtml = null;
 
-        Article::upsert([
-            'title'                 => $this->title,
-            'author'                => $this->author,
-            'author_link'           => $this->author_link,
+        try {
+            $contentOriginal = $dom->find('article')->innerHTML;
+            $contentMarkdown = strip_tags((new HtmlConverter())->convert($contentOriginal));
+            $contentHtml = Markdown::convertToHtml($contentMarkdown);
+        } catch (\Throwable $th) {
+            Log::debug($dom->innerHTML);
+        }
+
+        $this->article->update([
             'content_original'      => $contentOriginal,
             'content_original_html' => $this->applyModifiers($contentOriginal, 'content_original_html'),
             'content_markdown'      => $this->applyModifiers($contentMarkdown, 'content_markdown'),
             'content_markdown_html' => $this->applyModifiers($contentHtml, 'content_markdown_html'),
-            'excerpt'               => $this->excerpt,
-            'url'                   => $this->url,
-            'date'                  => $this->date,
             'banner'                => str_replace('https://miro.medium.com/max/60/', 'https://cdn-images-1.medium.com/max/1200/', $banner),
-            'embed_meta'            => json_encode($embed->getMetas()->all()),
-            'embed_linked'          => json_encode($embed->getLinkedData()->all()),
-        ], ['url']);
+            'embed_meta'            => json_encode($embedMeta),
+            'embed_linked'          => json_encode($embedLinked),
+        ]);
     }
 
-    private function applyModifiers(string $content, string $type): string
+    private function applyModifiers(?string $content, string $type): string
     {
+        if (empty($content)) {
+            return null;
+        }
+
         $modifiers = config('mediumkit.modifiers.'.$type);
 
         foreach ($modifiers as $modifier) {
-            $content = (new $modifier)->modify($content, [
-                'title'   => $this->title,
-                'author'  => $this->author,
-                'excerpt' => $this->excerpt,
-                'url'     => $this->url,
-                'date'    => $this->date,
-            ]);
+            $content = (new $modifier)->modify($content, $this->article->toArray());
         }
 
         return $content;
