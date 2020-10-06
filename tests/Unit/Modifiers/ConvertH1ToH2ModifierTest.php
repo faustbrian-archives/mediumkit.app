@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\ConvertH1ToH2Modifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\ConvertH1ToH2Modifier;
 
 class ConvertH1ToH2ModifierTest extends TestCase
 {

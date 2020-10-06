@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveRetweetLinkModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveRetweetLinkModifier;
 
 class RemoveRetweetLinkModifierTest extends TestCase
 {

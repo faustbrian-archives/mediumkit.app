@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 medium.json
 articles
+.php_cs.cache

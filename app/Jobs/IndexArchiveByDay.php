@@ -17,8 +17,11 @@ class IndexArchiveByDay implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public string $host;
+
     public int $year;
+
     public int $month;
+
     public int $day;
 
     public function __construct(string $host, int $year, int $month, int $day)

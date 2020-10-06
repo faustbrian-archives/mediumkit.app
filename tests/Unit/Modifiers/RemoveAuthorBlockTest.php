@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveAuthorBlockModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveAuthorBlockModifier;
 
-class RemoveAuthorBlockModifierTest extends TestCase
+class RemoveAuthorBlockTest extends TestCase
 {
     public function testReplaceAuthorBlock()
     {

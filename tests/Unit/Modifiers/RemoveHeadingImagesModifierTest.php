@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveHeadingImagesModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveHeadingImagesModifier;
 
 class RemoveHeadingImagesModifierTest extends TestCase
 {

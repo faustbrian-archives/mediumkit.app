@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Modifiers\RemoveHorizontalRuleModifier;
 use PHPUnit\Framework\TestCase;
+use App\Modifiers\RemoveHorizontalRuleModifier;
 
-class RemoveHorizontalRuleModifierTest extends TestCase
+class RemoveHorizontalRuleTest extends TestCase
 {
     public function testRemoveHorizontalRuleModifier()
     {
