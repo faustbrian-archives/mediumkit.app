@@ -49,13 +49,7 @@ class ProcessArticles extends Command
         $modifiers = config('mediumkit.modifiers.'.$type);
 
         foreach ($modifiers as $modifier) {
-            $content = (new $modifier)->modify($content, [
-                'title'   => $article->title,
-                'author'  => $article->author,
-                'excerpt' => $article->excerpt,
-                'url'     => $article->url,
-                'date'    => $article->date,
-            ]);
+            $content = (new $modifier)->modify($content, $article->toArray());
         }
 
         return $content;
