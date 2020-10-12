@@ -4,10 +4,10 @@ namespace App\Modifiers;
 
 use App\Contracts\Modifier;
 
-class RemoveHorizontalRuleModifier implements Modifier
+class MarkdownFixBrokenCodeBlocksModifier implements Modifier
 {
     public function modify(string $content, array $article): string
     {
-        return preg_replace('/<hr.*?>\s*/', '', $content);
+        return preg_replace('/```\s(```(.|\s)+?```)\s```/m', '$1', $content);
     }
 }

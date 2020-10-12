@@ -12,5 +12,6 @@ npm-debug.log
 yarn-error.log
 medium.json
 articles
+!articles/.gitkeep
 articles-md
-.php_cs.cache
+!articles-md/.gitkeep

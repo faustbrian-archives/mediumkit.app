@@ -21,6 +21,8 @@ use App\Modifiers\RemoveHtmlTagWhitespaceModifier;
 use App\Modifiers\RemoveListItemParagraphsModifier;
 use App\Modifiers\RemoveSmallOrMissingImagesModifier;
 use App\Modifiers\ConvertBreakingLineToNewLineModifier;
+use App\Modifiers\MarkdownRemoveHeadingImagesModifier;
+use App\Modifiers\MarkdownRemoveHorizontalRuleModifier;
 
 return [
 
@@ -42,7 +44,7 @@ return [
             ReplaceSourceSetsModifier::class,
             RemoveSmallOrMissingImagesModifier::class,
             RemoveHeadingImagesModifier::class,
-            // RemoveHorizontalRuleModifier::class,
+            RemoveHorizontalRuleModifier::class,
             RemoveTopTweetModifier::class,
             RemoveRetweetLinkModifier::class,
             // RemoveListItemParagraphsModifier::class,
@@ -55,7 +57,8 @@ return [
         ],
 
         'content_markdown' => [
-            //
+            MarkdownRemoveHeadingImagesModifier::class,
+            MarkdownRemoveHorizontalRuleModifier::class,
         ],
 
         'content_markdown_html' => [

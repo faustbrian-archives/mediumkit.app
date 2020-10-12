@@ -9,9 +9,9 @@ class RemoveHorizontalRuleTest extends TestCase
 {
     public function testRemoveHorizontalRuleModifier()
     {
-        $content = '<hr />'."\n".'<p>Test Paragraph</p>';
+        $content = '<hr />'."\n".'<hr /><p>Test Paragraph</p>'."\n";
 
-        $expected = '<p>Test Paragraph</p>';
+        $expected = '<p>Test Paragraph</p>'."\n";
 
         $this->assertEquals((new RemoveHorizontalRuleModifier())->modify($content, []), $expected);
     }

@@ -32,13 +32,19 @@ class ProcessArticles extends Command
     public function handle()
     {
         foreach (Article::all() as $article) {
-            $contentOriginal = $article->content_original;
+            $contentOriginal = $this->applyModifiers($article, $article->content_original, 'content_original_html');
             $contentMarkdown = strip_tags((new HtmlConverter())->convert($contentOriginal));
+
+            $contentMarkdown = $this->applyModifiers(
+                $article,
+                strip_tags((new HtmlConverter())->convert($contentOriginal)),
+                'content_markdown'
+            );
             $contentHtml = Markdown::convertToHtml($contentMarkdown);
 
             $article->update([
-                'content_original_html' => $this->applyModifiers($article, $contentOriginal, 'content_original_html'),
-                'content_markdown'      => $this->applyModifiers($article, $contentMarkdown, 'content_markdown'),
+                'content_original_html' => $contentOriginal,
+                'content_markdown'      => $contentMarkdown,
                 'content_markdown_html' => $this->applyModifiers($article, $contentHtml, 'content_markdown_html'),
             ]);
         }
